@@ -66,7 +66,7 @@ public class Lender {
 
     public void sendOffer(Applicant applicant) {
 
-        if(applicant.accepts() == true) {
+        if(applicant.accepts()) {
             approvedRequests.add(applicant);
             funds -= applicant.requestedAmount;
             System.out.println("Applicant accepted offer");

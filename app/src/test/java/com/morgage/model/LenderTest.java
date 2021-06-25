@@ -63,8 +63,8 @@ public class LenderTest {
         Applicant applicant = new Applicant(12,650,122523, 1000);
         lender.addFunds(10000);
         long expected = lender.getFunds();
+        applicant.decide("decline");
         lender.sendOffer(applicant);
-        applicant.decide(1);
         lender.checkFunds();
         assertEquals(expected , lender.getFunds());
     }
