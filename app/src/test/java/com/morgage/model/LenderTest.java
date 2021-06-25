@@ -47,13 +47,22 @@ public class LenderTest {
     @Test
     public void testLenderSeparatingFunds () {
 
+        Applicant applicant = new Applicant(12,650,122523, 1000);
+        lender.addFunds(10000);
         lender.getPendingFunds();
+        long expected = lender.getFunds();
+        lender.addRequests(applicant);
+
+        lender.checkFunds();
+        lender.checkPendingFunds();
+        assertFalse(lender.getFunds() == expected);
+
 //        lender.movingAccounts();
-
-
-
-
     }
+
+
+
+
 
     //As a lender, I want to keep pending loan amounts in a separate account
     // , so I don't extend too many offers and bankrupt myself.

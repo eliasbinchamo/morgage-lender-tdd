@@ -1,8 +1,14 @@
 package com.morgage.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Lender {
     private long funds;
     private long pendingFunds;
+    private List<Applicant> pendingRequests = new ArrayList<>();
+    private List<Applicant> approvedRequests = new ArrayList<>();
+//    private HashMap<>
 
     public Lender(){
         funds = 0;
@@ -17,6 +23,10 @@ public class Lender {
     }
     public void checkFunds() {
         System.out.println("Available funds: "+ getFunds());
+    }
+    public void checkPendingFunds(){
+        System.out.println("Pending funds: "+ getPendingFunds());
+
     }
     public void addFunds(long amount) {
         funds+=amount;
@@ -36,10 +46,20 @@ public class Lender {
         }
         return false;
     }
-
     public long getPendingFunds() {
-
         return pendingFunds;
+    }
+
+    public void addRequests(Applicant applicant) {
+
+        if(qualifyLoans(applicant)) {
+            approvedRequests.add(applicant);
+            funds -= applicant.requestedAmount;
+            pendingFunds += applicant.requestedAmount;
+        } else {
+            pendingRequests.add(applicant);
+            pendingFunds += applicant.requestedAmount;
+        }
 
     }
 }
