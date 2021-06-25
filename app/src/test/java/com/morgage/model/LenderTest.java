@@ -23,10 +23,16 @@ public class LenderTest {
     @Test
     public void testLenderAddFunds(){
         long previousAmount = lender.getFunds();
-        long amount = 43;
+        long amount = 10000;
         lender.addFunds(amount);
         long expectedAmount = lender.getFunds();
         assertFalse(previousAmount==expectedAmount);
     }
-
+    //As a lender, I want to approve or deny loans base on available funds, so that I don't go bankrupt.
+    @Test
+    public void testLenderAllowOrDenyLoans(){
+        long requestedLoanAmount = 9000;
+        lender.addFunds(43262);
+        assertTrue(lender.willApprove(requestedLoanAmount));
+    }
 }

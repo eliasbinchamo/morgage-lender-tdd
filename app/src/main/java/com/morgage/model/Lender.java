@@ -9,17 +9,17 @@ public class Lender {
     public long getFunds() {
         return funds;
     }
-
     public boolean hasFunds() {
         return funds>0;
     }
-
-
     public void checkFunds() {
         System.out.println("Available funds: "+ getFunds());
     }
-
     public void addFunds(long amount) {
         funds+=amount;
+    }
+
+    public boolean willApprove(long requestedLoanAmount) {
+        return requestedLoanAmount<funds;
     }
 }
