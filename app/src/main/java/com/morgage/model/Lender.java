@@ -22,4 +22,15 @@ public class Lender {
     public boolean willApprove(long requestedLoanAmount) {
         return requestedLoanAmount<funds;
     }
+
+    public boolean qualifyLoans(Applicant applicant) {
+        if (applicant.dti < 36) {
+            if (applicant.creditScore > 620) {
+                if (applicant.savings / 4 > applicant.requestedAmount) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

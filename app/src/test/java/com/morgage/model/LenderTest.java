@@ -35,4 +35,12 @@ public class LenderTest {
         lender.addFunds(43262);
         assertTrue(lender.willApprove(requestedLoanAmount));
     }
+    //As a lender, I want to qualify loan applications, so that I can ensure I get my money back.
+    @Test
+    public void testLenderQualifyForLoan(){
+        long requestedLoanAmount = 9000;
+        lender.addFunds(43262);
+        Applicant applicant = new Applicant(12,650,122523, 15000);
+        assertTrue(lender.qualifyLoans(applicant));
+    }
 }
