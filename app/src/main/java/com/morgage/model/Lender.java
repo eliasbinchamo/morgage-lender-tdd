@@ -14,4 +14,12 @@ public class Lender {
         return funds>0;
     }
 
+
+    public void checkFunds() {
+        System.out.println("Available funds: "+ getFunds());
+    }
+
+    public void addFunds(long amount) {
+        funds+=amount;
+    }
 }
