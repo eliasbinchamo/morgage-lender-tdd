@@ -2,10 +2,13 @@ package com.morgage.model;
 
 public class Lender {
     private long funds;
+    private long pendingFunds;
 
-    Lender(){
+    public Lender(){
         funds = 0;
+        pendingFunds = 0;
     }
+
     public long getFunds() {
         return funds;
     }
@@ -32,5 +35,11 @@ public class Lender {
             }
         }
         return false;
+    }
+
+    public long getPendingFunds() {
+
+        return pendingFunds;
+
     }
 }
