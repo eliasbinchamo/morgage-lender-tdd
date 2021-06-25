@@ -56,9 +56,20 @@ public class LenderTest {
         lender.checkFunds();
         lender.checkPendingFunds();
         assertFalse(lender.getFunds() == expected);
-
-//        lender.movingAccounts();
     }
+
+    @Test
+    public void testLenderSendOffer() {
+        Applicant applicant = new Applicant(12,650,122523, 1000);
+        lender.addFunds(10000);
+        long expected = lender.getFunds();
+        lender.sendOffer(applicant);
+        applicant.decide(1);
+        lender.checkFunds();
+        assertEquals(expected , lender.getFunds());
+    }
+
+
 
 
 

@@ -52,14 +52,26 @@ public class Lender {
 
     public void addRequests(Applicant applicant) {
 
-        if(qualifyLoans(applicant)) {
-            approvedRequests.add(applicant);
+        if (qualifyLoans(applicant)) {
+            pendingRequests.add(applicant);
             funds -= applicant.requestedAmount;
             pendingFunds += applicant.requestedAmount;
-        } else {
-            pendingRequests.add(applicant);
-            pendingFunds += applicant.requestedAmount;
-        }
+//        } else {
+//            pendingRequests.add(applicant);
+////            pendingFunds += applicant.requestedAmount;
+//        }
 
+        }
+    }
+
+    public void sendOffer(Applicant applicant) {
+
+        if(applicant.accepts() == true) {
+            approvedRequests.add(applicant);
+            funds -= applicant.requestedAmount;
+            System.out.println("Applicant accepted offer");
+        } else {
+            pendingRequests.remove(applicant);
+        }
     }
 }
